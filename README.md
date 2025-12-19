@@ -1,7 +1,14 @@
 # AI Foundation – Month 1
 
-Goal:
-Build strong Python, Git, and problem-solving fundamentals for an AI career.
+## Goal
+Build strong foundations in Python, Math, and Machine Learning
+to transition into an AI Engineer role in 6 months.
 
-Structure:
-- day01: Environment setup and first Python execution
+## Month 1 Focus
+- Python for ML
+- Git & GitHub
+- Math for AI (Linear Algebra, Probability)
+- Data handling with NumPy & Pandas
+
+## Commitment
+Daily execution. No skipping. No excuses.
