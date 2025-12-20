@@ -13,7 +13,7 @@ employee = {
     "dept" : "React"
 }
 
-print(employee.items())
+# print(employee.items())
 
 for key, value in employee.items():
     print(key , ":", value)
