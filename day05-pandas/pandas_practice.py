@@ -56,4 +56,44 @@ df['Age'] = df['Age'].fillna(df['Age'].mean())
 df['Salary'] = df['Salary'].fillna(df['Salary'].mean())
 print("\nDataFrame after handling missing values:\n", df)
 
+# Renaming columns
+df = df.rename(columns={'Name': 'Full name', 'Salary': 'Annual salary', 'Age':'Age(yrs)'})
+df = df.rename(columns = {'Annual salary':'Salary(USD)'})
+print("\nDataFrame after renaming columns:\n", df)
+
+# Changing data types
+df['Age(yrs)'] = df['Age(yrs)'].astype(int)
+print("\nDataFrame after changing data types:\n", df)
+
+# 4. Data aggregation & grouping
+print("\n--- Data aggregation & grouping ---\n")
+data = {
+    'Department': ['HR', 'IT', 'Finance', 'IT', 'HR'],
+    'Employee': ['Alice', 'Bob', 'Charlie', 'David', 'Eve'],
+    'Salary': [50000, 60000, 55000, 65000, 52000]
+}
+df = pd.DataFrame(data)
+print("Original DataFrame:\n", df)
+# Grouping by department and calculating mean salary
+grouped_df = df.groupby('Department')['Salary'].mean()
+print("\nMean Salary by Department:\n", grouped_df)
+# Aggregating data: total and average salary by department'
+agg_df = df.groupby('Department')['Salary'].agg(['sum','mean','count','max','min','std','var'])
+print("\nTotal and Average Salary by Department:\n", agg_df)
+# Resetting index after grouping
+reset_df = agg_df.reset_index()
+print("\nReset Index DataFrame:\n", reset_df)
+# Merging two DataFrames
+data2 = {
+    'Department': ['HR', 'IT', 'Finance'],
+    'Location': ['New York', 'San Francisco', 'Chicago']
+}
+df2 = pd.DataFrame(data2)
+print("\nSecond DataFrame:\n", df2)
+# Merging two DataFrames
+merged_df = pd.merge(df, df2, on='Department')
+print("\nMerged DataFrame:\n", merged_df)
+
+
+
 

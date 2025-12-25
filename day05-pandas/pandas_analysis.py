@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv("day05-pandas/data.csv")
+df = pd.read_csv("./data.csv")
 print(df)
 print(df.isna().sum())
 print(df.info())
@@ -55,18 +55,6 @@ def seniority(age):
 df["seniority"] = df["age"].apply(seniority)
 print(df)
 
-
 # Exporting the cleaned DataFrame to a new CSV file
-df.to_csv("day05-pandas/cleaned_data.csv", index=False)
-# 1. Creating & inspecting DataFrames
-# (Creating DataFrames, reading from CSV, info, describe, isna, dtypes
-print("\n--- Creating & inspecting DataFrames ---\n")
-data = {
-    'Name': ['Alice', 'Bob', 'Charlie', 'David'],
-    'Age': [24, 27, 22, 32],
-    'Salary': [50000, 60000, 55000, 65000]
-}
-df = pd.DataFrame(data)
-print("DataFrame:\n", df)
-
+df.to_csv("cleaned_data.csv", index=False)
 
