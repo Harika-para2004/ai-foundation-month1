@@ -1,0 +1,66 @@
+"""
+Day 10 — Statistics for Machine Learning
+Demonstration of underfitting, good fit, and overfitting.
+"""
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+def generate_data():
+    """
+    Generates synthetic linear data with noise.
+    """
+    np.random.seed(0)
+    x = np.linspace(0, 10, 20)
+    y = 2 * x + np.random.randn(20) * 2
+    return x, y
+
+
+def fit_model(x, y, degree):
+    """
+    Fits a polynomial model of given degree.
+    """
+    coeffs = np.polyfit(x, y, degree)
+    poly = np.poly1d(coeffs)
+    return poly(x)
+
+
+def plot_results(x, y, y_underfit, y_good, y_overfit):
+    """
+    Visualization:
+    - Degree 1  -> Underfitting (high bias)
+    - Degree 3  -> Good fit
+    - Degree 10 -> Overfitting (high variance)
+    """
+
+    plt.scatter(x, y, label="Actual Data", color="black")
+
+    plt.plot(x, y_underfit, label="Underfitting (Degree 1)", linewidth=2)
+    plt.plot(x, y_good, label="Good Fit (Degree 3)", linewidth=2)
+    plt.plot(x, y_overfit, label="Overfitting (Degree 10)", linewidth=2)
+
+    plt.xlabel("X")
+    plt.ylabel("Y")
+    plt.title("Underfitting vs Good Fit vs Overfitting")
+    plt.legend()
+    plt.show()
+
+
+def main():
+    x, y = generate_data()
+
+    # Too simple: cannot capture pattern
+    y_underfit = fit_model(x, y, degree=1)
+
+    # Just right: captures trend without noise
+    y_good = fit_model(x, y, degree=3)
+
+    # Too complex: memorizes noise
+    y_overfit = fit_model(x, y, degree=10)
+
+    plot_results(x, y, y_underfit, y_good, y_overfit)
+
+
+if __name__ == "__main__":
+    main()
